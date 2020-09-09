@@ -1,4 +1,6 @@
 class HighscoresController < ApplicationController
+    skip_beofre_action :verify_authenticity_token
+    
     def top_day
         @highscores = Highscore.top_day
         render 'highscores/index'
