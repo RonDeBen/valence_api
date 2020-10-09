@@ -20,7 +20,7 @@ class Highscore < ApplicationRecord
         if(my_top_score.nil?)
             lowest_highscore
         else
-            (my_top_score.level > lowest_highscore) ? my_top_score.level : lowest_highscore
+            (my_top_score.level > lowest_highscore.level) ? my_top_score.level : lowest_highscore.level
         end
     end
 end
