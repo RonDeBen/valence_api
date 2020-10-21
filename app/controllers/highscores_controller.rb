@@ -19,6 +19,7 @@ class HighscoresController < ApplicationController
     def send_score
         @highscore = Highscore.new(name: params[:name], level: params[:level], seconds: params[:seconds], uniq_id: params[:uniq_id])
         @highscore.save!
+        Highscore.remove_outer_scores
         render 'highscores/my_score'
     end
 

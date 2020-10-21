@@ -23,4 +23,11 @@ class Highscore < ApplicationRecord
             (my_top_score.level > lowest_highscore.level) ? my_top_score.level : lowest_highscore.level
         end
     end
+
+    def self.remove_outer_scores
+        inner_scores = Highscore.top_all + Highscore.top_week + Highscore.top_day
+        (Highscore.all - inner_scores).each do |score|
+            score.destroy
+        end
+    end
 end
